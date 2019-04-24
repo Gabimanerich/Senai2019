@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Faça seu Pedido:</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item>
+          <ion-label>Tamanhos</ion-label>
+          <ion-select [(ngModel)]="idTamanhos" (ionChange)="escolherSabores()">
+            <ion-option value={{tamanho.idtamanhos}} *ngFor="let tamanho of tamanhos">{{tamanho.tamanho}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <ion-item *ngFor="let escolherSabores of sabores">{{escolherSabores.sabores}}                   - R${{escolherSabores.preco}}</ion-item>
+      </ion-list>
+</ion-content>
+
