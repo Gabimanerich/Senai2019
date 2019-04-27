@@ -3,8 +3,8 @@ import { HttpProvider } from './../../providers/http';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-
 @IonicPage()
+
 @Component({
   selector: 'page-pageprincipal',
   templateUrl: 'pageprincipal.html',
@@ -20,7 +20,7 @@ export class PageprincipalPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad PageprincipalPage');
 
-    this.http.url = 'http://104.196.102.231/tamanhos';
+    this.http.url = 'http://localhost:3000/tamanhos';
     this.http.get().subscribe(
       (data : any) => {
         this.tamanhos = data;
@@ -32,8 +32,8 @@ export class PageprincipalPage {
   }
 
 escolherSabores(){
-    
-    this.http.url = 'http://104.196.102.231/sabores/' + this.idTamanho;
+
+    this.http.url = 'http://localhost:3000/sabores/' + this.idTamanho;
     this.http.get().subscribe(
       (data : any ) => {
         console.log(data);
@@ -42,6 +42,6 @@ escolherSabores(){
 
     )
   }
- 
+
 
 }

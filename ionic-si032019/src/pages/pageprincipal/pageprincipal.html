@@ -11,16 +11,14 @@
     <ion-list>
         <ion-item>
           <ion-label>Tamanhos</ion-label>
-          <ion-select [(ngModel)]="idTamanho" (ionChange)="escolherSabores()">
-            <ion-option value={{tamanho.id}} *ngFor="let tamanho of tamanhos">{{tamanho.name}}</ion-option>
+          <ion-select [(ngModel)]="idTamanhos" (ionChange)="escolherSabores()">
+            <ion-option value={{tamanho.idtamanhos}} *ngFor="let tamanho of tamanhos">{{tamanho.tamanho}}</ion-option>
           </ion-select>
         </ion-item>
       </ion-list>
 
       <ion-list>
-        <ion-item *ngFor="let escolherSabores of sabores">{{escolherSabores.sabor}}, R${{escolherSabores.preco}}</ion-item>
+        <ion-item *ngFor="let escolherSabores of sabores">{{escolherSabores.sabores}}                   - R${{escolherSabores.preco}}</ion-item>
       </ion-list>
-      
 </ion-content>
-
 

@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { NavController, Toast } from 'ionic-angular';
 //import {Messages} from '../../providers/messages';
 import {Toasts } from '../../providers/toast';
-
+import { CidadesPage } from '../cidades/cidades';
 
 @Component({
   selector: 'page-home',
@@ -38,13 +38,18 @@ export class HomePage {
           (error : any) => {
             this.showToastlogin()
           }
-        );   
- 
+        );
+
   }
-  
+
   public accessPageCreate (){
     this.navCtrl.push(CadastroPage);
+    (data : any ) => {
+      this.navCtrl.push(CidadesPage)
+    }
   }
+
+
 
 
  // constructor(public navCtrl: NavController, private messages : Messages) {
@@ -52,7 +57,7 @@ export class HomePage {
   //public showMessage(){
    // this.messages.loadingShow
   //}
-  
+
  // public esconderAlunos(){
  //   this.exibirLista = !this.exibirLista;
  // }
