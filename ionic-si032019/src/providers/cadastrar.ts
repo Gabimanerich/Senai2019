@@ -7,16 +7,21 @@ export class cadastrar {
 
     constructor(public http : HttpProvider ){}
 
-    public cadastrando (username : string, email: string, password : string){
+    public cadastrando (pSabor : string, pValor: string, pTamanho: number,){
         let json = {
-            userName : username,
-            email : email,
-            password : password
+            sabor : pSabor,
+            preco : pValor,
+            tamanho : pTamanho
         }
 
         this.http.url = 'http://localhost:3000/cadastro';
         return this.http.post(json)
-    
+
     }
-    
+
+    public getTamanho(){
+      this.http.url = 'http://localhost:3000/tamanhoConsulta';
+      return this.http.get()
+  }
+
 }

@@ -24,6 +24,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var decorators_1 = require("../decorators");
 var action_1 = require("../kernel/action");
+var kernel_utils_1 = require("../kernel/kernel-utils");
 var route_types_1 = require("../kernel/route-types");
 var mysql_factory_1 = require("../mysql/mysql_factory");
 var BairrosAction = /** @class */ (function (_super) {
@@ -32,10 +33,13 @@ var BairrosAction = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     BairrosAction.prototype.generateSQL = function () {
-        return 'select * from bairros where bairros.idbairros';
+        return 'select * from bairros.bairro from bairros';
+        +'where bairros.idcidades';
     };
     BairrosAction.prototype.getBairros = function () {
         var _this = this;
+        var cidade = this.req.params.cidade;
+        new kernel_utils_1.KernelUtils().createExceptionApiError('1002', 'Cidade não informada', (cidade == null || cidade == undefined));
         new mysql_factory_1.MySQLFactory().getConnection().select(this.generateSQL()).subscribe(function (data) {
             _this.sendAnswer(data);
         }, function (error) {

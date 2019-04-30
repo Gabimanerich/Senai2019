@@ -32,7 +32,7 @@ var TamanhosAction = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     TamanhosAction.prototype.generateSQL = function () {
-        return 'select * from tamanhos where tamanhos.idtamanhos';
+        return 'select * from tamanho where tamanho.idtamanho';
     };
     TamanhosAction.prototype.GetTamanho = function () {
         var _this = this;
@@ -47,7 +47,7 @@ var TamanhosAction = /** @class */ (function (_super) {
         this.actionEscope = route_types_1.ActionType.atPublic;
     };
     __decorate([
-        decorators_1.Get('/tamanhos'),
+        decorators_1.Get('/tamanho'),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)

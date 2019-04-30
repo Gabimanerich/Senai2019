@@ -12,7 +12,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class PageprincipalPage {
   public tamanhos = [];
   public sabores = [];
-  public idTamanho : any;
+  public idTamanhos = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private http : HttpProvider, private toast : Toasts) {
   }
@@ -33,7 +33,7 @@ export class PageprincipalPage {
 
 escolherSabores(){
 
-    this.http.url = 'http://localhost:3000/sabores/' + this.idTamanho;
+    this.http.url = 'http://localhost:3000/sabores/' + this.idTamanhos;
     this.http.get().subscribe(
       (data : any ) => {
         console.log(data);

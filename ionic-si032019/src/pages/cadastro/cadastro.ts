@@ -11,24 +11,26 @@ import { Toasts } from './../../providers/toast';
 })
 export class CadastroPage {
 
-  public userName: any;
-  public email: any;
-  public password:any;
-  public cidades = [];
-  public bairros = [];
-  public idcidades : any;
+  public sabor: any;
+  public preco: any;
+  public idTamanho : number = 0 ;
+  public listaTamanhos : any;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private cadastrar : cadastrar,  private http : HttpProvider, private toast : Toasts ) {
+    // Ao abrir a tela de cadastro de sabores chama esta função "buscarTamanho();"
+    this.buscarTamanho();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroPage');
+
   }
 
   public cadastro(){
-    this.cadastrar.cadastrando(this.userName,this.email, this.password).subscribe(
+    this.cadastrar.cadastrando(this.sabor, this.preco, this.idTamanho).subscribe(
       (data: any) => {
-        this.navCtrl.push(HomePage)
+
       },
       (error : any) => {
         console.log("não foi possivel cadastrar")
@@ -36,31 +38,16 @@ export class CadastroPage {
     )
   }
 
-  public Mostrarcidades(){
-    this.http.url = 'http://localhost:3000/cidades';
-    this.http.get().subscribe(
-      (data : any) => {
-        this.cidades = data;
-        console.log(this.cidades);
+  public buscarTamanho(){
+    this.cadastrar.getTamanho().subscribe(
+      (data: any) => {
+        this.listaTamanhos = data
       },
       (error : any) => {
-        this.toast.showToast("Não foi possivel carregar...");
+        console.log("não foi possivel cadastrar")
       }
-    );
-  }
-
-  escolherBairro(){
-
-    this.http.url = 'http://localhost:3000/bairros/' + this.idcidades;
-    this.http.get().subscribe(
-      (data : any ) => {
-        this.bairros = data;
-        console.log(this.bairros);
-      },
-      (error : any ) => {
-        console.log(error);
-      }
-
     )
   }
+
+
 }

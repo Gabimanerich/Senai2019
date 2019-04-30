@@ -36,6 +36,7 @@ var SaboresAction = /** @class */ (function (_super) {
     };
     SaboresAction.prototype.Get = function () {
         var _this = this;
+        var tamanho = this.req.params.tamanho;
         new mysql_factory_1.MySQLFactory().getConnection().select(this.generateSQL()).subscribe(function (data) {
             _this.sendAnswer(data);
         }, function (error) {

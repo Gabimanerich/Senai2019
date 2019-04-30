@@ -5,35 +5,30 @@
 </ion-header>
 
 <ion-content>
-    <ion-item>
-        <ion-label floating>Nome Completo</ion-label>
-        <ion-input [(ngModel)]="name" type="text">
-        </ion-input>
-      </ion-item>
-  <ion-item>
-    <ion-label floating>Username</ion-label>
-    <ion-input [(ngModel)]="username" type="text">
-    </ion-input>
-  </ion-item>
-<ion-item>
-  <ion-label floating>Password</ion-label>
-  <ion-input [(ngModel)]="password"  type="password">
-  </ion-input>
-</ion-item>
+    <ion-list>
+        <ion-item>
+          <ion-label>Escolha o tamanho:</ion-label>
+          <ion-select [(ngModel)]="idTamanho">
+            <ion-option value={{tamanho.tamanho}} *ngFor="let tamanho of listaTamanhos">{{tamanho.tamanho}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
 
-<div padding>
-<ion-list>
     <ion-item>
-      <ion-label>Cidades</ion-label>
-      <ion-select [(ngModel)]="idcidades" (ionChange)="escolherBairro()">
-        <ion-option value={{cidade.idcidades}} *ngFor="let cidade of cidades">{{cidade.cidade}}</ion-option>
-      </ion-select>
+      <ion-label floating>Sabor:</ion-label>
+      <ion-input [(ngModel)]="sabor" type="text">
+      </ion-input>
     </ion-item>
-  </ion-list>
-</div>
-<ion-list>
-    <ion-item *ngFor="let escolherBairro of bairros">{{escolherBairro.bairros}},</ion-item>
-  </ion-list>
+    <ion-item>
+      <ion-label floating>Valor:</ion-label>
+      <ion-input [(ngModel)]="preco" type="text">
+      </ion-input>
+    </ion-item>
+
+  <div padding>
+      <button ion-button color="primary" block (click)="cadastro()">Salvar</button>
+  </div>
+
 </ion-content>
 
 

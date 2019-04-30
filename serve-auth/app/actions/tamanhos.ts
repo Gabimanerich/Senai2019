@@ -7,10 +7,10 @@ import {MySQLFactory} from '../mysql/mysql_factory';
 export class TamanhosAction extends Action {
 
     private generateSQL() : string {
-        return 'select * from tamanhos where tamanhos.idtamanhos';
+        return 'select * from tamanho where tamanho.idtamanho';
     }
 
-    @Get('/tamanhos')
+    @Get('/tamanho')
     public GetTamanho(){
         new MySQLFactory().getConnection().select(this.generateSQL()).subscribe(
             (data : any) => {
